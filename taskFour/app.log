@@ -1,0 +1,17 @@
+2025/11/12 15:05:30 main.go:65: Server starting on :8080
+2025/11/12 15:06:31 logger.go:22: | 200 |       524.8µs |             ::1 | GET     /swagger/index.html
+2025/11/12 15:06:32 logger.go:22: | 200 |       519.8µs |             ::1 | GET     /swagger/swagger-ui.css
+2025/11/12 15:06:32 logger.go:22: | 200 |            0s |             ::1 | GET     /swagger/index.css
+2025/11/12 15:06:32 logger.go:22: | 200 |            0s |             ::1 | GET     /swagger/swagger-initializer.js
+2025/11/12 15:06:32 logger.go:22: | 200 |      4.7456ms |             ::1 | GET     /swagger/swagger-ui-standalone-preset.js
+2025/11/12 15:06:32 logger.go:22: | 200 |     11.3514ms |             ::1 | GET     /swagger/swagger-ui-bundle.js
+2025/11/12 15:06:32 logger.go:22: | 200 |            0s |             ::1 | GET     /swagger/doc.json
+2025/11/12 15:06:32 logger.go:22: | 200 |            0s |             ::1 | GET     /swagger/favicon-32x32.png
+2025/11/12 15:07:06 logger.go:22: | 401 |       614.7µs |             ::1 | POST    /api/auth/login
+2025/11/12 15:07:09 logger.go:22: | 401 |            0s |             ::1 | POST    /api/auth/login
+2025/11/12 15:07:11 logger.go:22: | 401 |            0s |             ::1 | POST    /api/auth/login
+2025/11/12 15:14:50 logger.go:22: | 201 |    206.5146ms |             ::1 | POST    /api/auth/register
+2025/11/12 15:15:06 logger.go:22: | 400 |            0s |             ::1 | POST    /api/auth/register
+2025/11/12 15:15:07 logger.go:22: | 400 |            0s |             ::1 | POST    /api/auth/register
+2025/11/12 15:15:09 logger.go:22: | 400 |       630.5µs |             ::1 | POST    /api/auth/register
+2025/11/12 15:15:23 logger.go:22: | 200 |     58.6926ms |             ::1 | POST    /api/auth/login
