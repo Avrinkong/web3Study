@@ -1,0 +1,1003 @@
+{
+    "contracts": {
+        "h:/project/web3Study/solidityTaskOne/taskOne6.sol": {
+            "TaskOne6": {
+                "abi": [
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "int256[]",
+                                "name": "nums",
+                                "type": "int256[]"
+                            },
+                            {
+                                "internalType": "int256",
+                                "name": "target",
+                                "type": "int256"
+                            }
+                        ],
+                        "name": "binarySearch",
+                        "outputs": [
+                            {
+                                "internalType": "int256",
+                                "name": "",
+                                "type": "int256"
+                            }
+                        ],
+                        "stateMutability": "pure",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "kind": "dev",
+                    "methods": {
+                        "binarySearch(int256[],int256)": {
+                            "details": "在有序数组中使用二分查找算法查找目标值",
+                            "params": {
+                                "nums": "有序数组（升序排列）",
+                                "target": "要查找的目标值"
+                            },
+                            "returns": {
+                                "_0": "index 目标值在数组中的索引，如果不存在则返回-1"
+                            }
+                        }
+                    },
+                    "version": 1
+                },
+                "evm": {
+                    "bytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "linkReferences": {},
+                        "object": "608080604052346015576101d2908161001a8239f35b5f80fdfe6080600436101561000e575f80fd5b5f3560e01c63f435370614610021575f80fd5b346100d15760403660031901126100d1576004359067ffffffffffffffff82116100d157366023830112156100d15781600401359067ffffffffffffffff82116100d5578160051b91601f19603f840116820182811067ffffffffffffffff8211176100d557604052815260246020820192840101913683116100d157602460209401905b8382106100c257846100ba60243585610111565b604051908152f35b813581529084019084016100a6565b5f80fd5b634e487b7160e01b5f52604160045260245ffd5b80518210156100fd5760209160051b010190565b634e487b7160e01b5f52603260045260245ffd5b5f918151915b82841061012757505050505f1990565b8383038381116101815760011c840193848111610181578261014986846100e9565b5103610156575050505090565b826101658684959697946100e9565b51121561019557506001810180911161018157925b9190610117565b634e487b7160e01b5f52601160045260245ffd5b935061017a56fea2646970667358221220f1f33c4e73f186bc6246c5334cda684c849ae27d5d854a8643def5c99070b77164736f6c634300081e0033",
+                        "opcodes": "PUSH1 0x80 DUP1 PUSH1 0x40 MSTORE CALLVALUE PUSH1 0x15 JUMPI PUSH2 0x1D2 SWAP1 DUP2 PUSH2 0x1A DUP3 CODECOPY RETURN JUMPDEST PUSH0 DUP1 REVERT INVALID PUSH1 0x80 PUSH1 0x4 CALLDATASIZE LT ISZERO PUSH2 0xE JUMPI PUSH0 DUP1 REVERT JUMPDEST PUSH0 CALLDATALOAD PUSH1 0xE0 SHR PUSH4 0xF4353706 EQ PUSH2 0x21 JUMPI PUSH0 DUP1 REVERT JUMPDEST CALLVALUE PUSH2 0xD1 JUMPI PUSH1 0x40 CALLDATASIZE PUSH1 0x3 NOT ADD SLT PUSH2 0xD1 JUMPI PUSH1 0x4 CALLDATALOAD SWAP1 PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT PUSH2 0xD1 JUMPI CALLDATASIZE PUSH1 0x23 DUP4 ADD SLT ISZERO PUSH2 0xD1 JUMPI DUP2 PUSH1 0x4 ADD CALLDATALOAD SWAP1 PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT PUSH2 0xD5 JUMPI DUP2 PUSH1 0x5 SHL SWAP2 PUSH1 0x1F NOT PUSH1 0x3F DUP5 ADD AND DUP3 ADD DUP3 DUP2 LT PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT OR PUSH2 0xD5 JUMPI PUSH1 0x40 MSTORE DUP2 MSTORE PUSH1 0x24 PUSH1 0x20 DUP3 ADD SWAP3 DUP5 ADD ADD SWAP2 CALLDATASIZE DUP4 GT PUSH2 0xD1 JUMPI PUSH1 0x24 PUSH1 0x20 SWAP5 ADD SWAP1 JUMPDEST DUP4 DUP3 LT PUSH2 0xC2 JUMPI DUP5 PUSH2 0xBA PUSH1 0x24 CALLDATALOAD DUP6 PUSH2 0x111 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE RETURN JUMPDEST DUP2 CALLDATALOAD DUP2 MSTORE SWAP1 DUP5 ADD SWAP1 DUP5 ADD PUSH2 0xA6 JUMP JUMPDEST PUSH0 DUP1 REVERT JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x41 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST DUP1 MLOAD DUP3 LT ISZERO PUSH2 0xFD JUMPI PUSH1 0x20 SWAP2 PUSH1 0x5 SHL ADD ADD SWAP1 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x32 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST PUSH0 SWAP2 DUP2 MLOAD SWAP2 JUMPDEST DUP3 DUP5 LT PUSH2 0x127 JUMPI POP POP POP POP PUSH0 NOT SWAP1 JUMP JUMPDEST DUP4 DUP4 SUB DUP4 DUP2 GT PUSH2 0x181 JUMPI PUSH1 0x1 SHR DUP5 ADD SWAP4 DUP5 DUP2 GT PUSH2 0x181 JUMPI DUP3 PUSH2 0x149 DUP7 DUP5 PUSH2 0xE9 JUMP JUMPDEST MLOAD SUB PUSH2 0x156 JUMPI POP POP POP POP SWAP1 JUMP JUMPDEST DUP3 PUSH2 0x165 DUP7 DUP5 SWAP6 SWAP7 SWAP8 SWAP5 PUSH2 0xE9 JUMP JUMPDEST MLOAD SLT ISZERO PUSH2 0x195 JUMPI POP PUSH1 0x1 DUP2 ADD DUP1 SWAP2 GT PUSH2 0x181 JUMPI SWAP3 JUMPDEST SWAP2 SWAP1 PUSH2 0x117 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x11 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP4 POP PUSH2 0x17A JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 CALL RETURN EXTCODECOPY 0x4E PUSH20 0xF186BC6246C5334CDA684C849AE27D5D854A8643 0xDE CREATE2 0xC9 SWAP1 PUSH17 0xB77164736F6C634300081E003300000000 ",
+                        "sourceMap": "156:867:0:-:0;;;;;;;;;;;;;;;;;"
+                    },
+                    "deployedBytecode": {
+                        "functionDebugData": {
+                            "fun_binarySearch": {
+                                "entryPoint": 273,
+                                "id": 71,
+                                "parameterSlots": 2,
+                                "returnSlots": 1
+                            },
+                            "memory_array_index_access_int256_dyn": {
+                                "entryPoint": 233,
+                                "id": null,
+                                "parameterSlots": 2,
+                                "returnSlots": 1
+                            }
+                        },
+                        "generatedSources": [],
+                        "immutableReferences": {},
+                        "linkReferences": {},
+                        "object": "6080600436101561000e575f80fd5b5f3560e01c63f435370614610021575f80fd5b346100d15760403660031901126100d1576004359067ffffffffffffffff82116100d157366023830112156100d15781600401359067ffffffffffffffff82116100d5578160051b91601f19603f840116820182811067ffffffffffffffff8211176100d557604052815260246020820192840101913683116100d157602460209401905b8382106100c257846100ba60243585610111565b604051908152f35b813581529084019084016100a6565b5f80fd5b634e487b7160e01b5f52604160045260245ffd5b80518210156100fd5760209160051b010190565b634e487b7160e01b5f52603260045260245ffd5b5f918151915b82841061012757505050505f1990565b8383038381116101815760011c840193848111610181578261014986846100e9565b5103610156575050505090565b826101658684959697946100e9565b51121561019557506001810180911161018157925b9190610117565b634e487b7160e01b5f52601160045260245ffd5b935061017a56fea2646970667358221220f1f33c4e73f186bc6246c5334cda684c849ae27d5d854a8643def5c99070b77164736f6c634300081e0033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x4 CALLDATASIZE LT ISZERO PUSH2 0xE JUMPI PUSH0 DUP1 REVERT JUMPDEST PUSH0 CALLDATALOAD PUSH1 0xE0 SHR PUSH4 0xF4353706 EQ PUSH2 0x21 JUMPI PUSH0 DUP1 REVERT JUMPDEST CALLVALUE PUSH2 0xD1 JUMPI PUSH1 0x40 CALLDATASIZE PUSH1 0x3 NOT ADD SLT PUSH2 0xD1 JUMPI PUSH1 0x4 CALLDATALOAD SWAP1 PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT PUSH2 0xD1 JUMPI CALLDATASIZE PUSH1 0x23 DUP4 ADD SLT ISZERO PUSH2 0xD1 JUMPI DUP2 PUSH1 0x4 ADD CALLDATALOAD SWAP1 PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT PUSH2 0xD5 JUMPI DUP2 PUSH1 0x5 SHL SWAP2 PUSH1 0x1F NOT PUSH1 0x3F DUP5 ADD AND DUP3 ADD DUP3 DUP2 LT PUSH8 0xFFFFFFFFFFFFFFFF DUP3 GT OR PUSH2 0xD5 JUMPI PUSH1 0x40 MSTORE DUP2 MSTORE PUSH1 0x24 PUSH1 0x20 DUP3 ADD SWAP3 DUP5 ADD ADD SWAP2 CALLDATASIZE DUP4 GT PUSH2 0xD1 JUMPI PUSH1 0x24 PUSH1 0x20 SWAP5 ADD SWAP1 JUMPDEST DUP4 DUP3 LT PUSH2 0xC2 JUMPI DUP5 PUSH2 0xBA PUSH1 0x24 CALLDATALOAD DUP6 PUSH2 0x111 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE RETURN JUMPDEST DUP2 CALLDATALOAD DUP2 MSTORE SWAP1 DUP5 ADD SWAP1 DUP5 ADD PUSH2 0xA6 JUMP JUMPDEST PUSH0 DUP1 REVERT JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x41 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST DUP1 MLOAD DUP3 LT ISZERO PUSH2 0xFD JUMPI PUSH1 0x20 SWAP2 PUSH1 0x5 SHL ADD ADD SWAP1 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x32 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST PUSH0 SWAP2 DUP2 MLOAD SWAP2 JUMPDEST DUP3 DUP5 LT PUSH2 0x127 JUMPI POP POP POP POP PUSH0 NOT SWAP1 JUMP JUMPDEST DUP4 DUP4 SUB DUP4 DUP2 GT PUSH2 0x181 JUMPI PUSH1 0x1 SHR DUP5 ADD SWAP4 DUP5 DUP2 GT PUSH2 0x181 JUMPI DUP3 PUSH2 0x149 DUP7 DUP5 PUSH2 0xE9 JUMP JUMPDEST MLOAD SUB PUSH2 0x156 JUMPI POP POP POP POP SWAP1 JUMP JUMPDEST DUP3 PUSH2 0x165 DUP7 DUP5 SWAP6 SWAP7 SWAP8 SWAP5 PUSH2 0xE9 JUMP JUMPDEST MLOAD SLT ISZERO PUSH2 0x195 JUMPI POP PUSH1 0x1 DUP2 ADD DUP1 SWAP2 GT PUSH2 0x181 JUMPI SWAP3 JUMPDEST SWAP2 SWAP1 PUSH2 0x117 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x11 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP4 POP PUSH2 0x17A JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 CALL RETURN EXTCODECOPY 0x4E PUSH20 0xF186BC6246C5334CDA684C849AE27D5D854A8643 0xDE CREATE2 0xC9 SWAP1 PUSH17 0xB77164736F6C634300081E003300000000 ",
+                        "sourceMap": "156:867:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;156:867:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;447:573;156:867;;;;637:324;644:12;;;;;;988:2;;;;;;447:573;:::o;637:324::-;156:867;;;;;;;;;;;;;;;;;;745:9;;;;;:::i;:::-;156:867;745:19;;;785:18;;;;;:::o;741:209::-;829:9;;;;;;;;;:::i;:::-;156:867;829:18;;;;156:867;;;;;;;;;825:125;;637:324;;;;156:867;;;;;;;;;;;;825:125;923:11;;825:125;"
+                    },
+                    "gasEstimates": {
+                        "creation": {
+                            "codeDepositCost": "93200",
+                            "executionCost": "147",
+                            "totalCost": "93347"
+                        },
+                        "external": {
+                            "binarySearch(int256[],int256)": "infinite"
+                        }
+                    },
+                    "methodIdentifiers": {
+                        "binarySearch(int256[],int256)": "f4353706"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"int256[]\",\"name\":\"nums\",\"type\":\"int256[]\"},{\"internalType\":\"int256\",\"name\":\"target\",\"type\":\"int256\"}],\"name\":\"binarySearch\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"binarySearch(int256[],int256)\":{\"details\":\"\\u5728\\u6709\\u5e8f\\u6570\\u7ec4\\u4e2d\\u4f7f\\u7528\\u4e8c\\u5206\\u67e5\\u627e\\u7b97\\u6cd5\\u67e5\\u627e\\u76ee\\u6807\\u503c\",\"params\":{\"nums\":\"\\u6709\\u5e8f\\u6570\\u7ec4\\uff08\\u5347\\u5e8f\\u6392\\u5217\\uff09\",\"target\":\"\\u8981\\u67e5\\u627e\\u7684\\u76ee\\u6807\\u503c\"},\"returns\":{\"_0\":\"index \\u76ee\\u6807\\u503c\\u5728\\u6570\\u7ec4\\u4e2d\\u7684\\u7d22\\u5f15\\uff0c\\u5982\\u679c\\u4e0d\\u5b58\\u5728\\u5219\\u8fd4\\u56de-1\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"h:/project/web3Study/solidityTaskOne/taskOne6.sol\":\"TaskOne6\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"h:/project/web3Study/solidityTaskOne/taskOne6.sol\":{\"keccak256\":\"0x4bcf29e8cbedbccf0a81b5b62a2d6809670607ea542defb24e65cb809e347cc4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://11e935d7de2ba130f1656b7b282b7f8c760aa4b5fd385e47b918d346685f639a\",\"dweb:/ipfs/QmQxEMPt8MTyofg6PAUhhTu62VFTFnc8hXGaoRzht7R16K\"]}},\"version\":1}",
+                "storageLayout": {
+                    "storage": [],
+                    "types": null
+                },
+                "userdoc": {
+                    "kind": "user",
+                    "methods": {},
+                    "version": 1
+                }
+            }
+        }
+    },
+    "sources": {
+        "h:/project/web3Study/solidityTaskOne/taskOne6.sol": {
+            "ast": {
+                "absolutePath": "h:/project/web3Study/solidityTaskOne/taskOne6.sol",
+                "exportedSymbols": {
+                    "TaskOne6": [
+                        72
+                    ]
+                },
+                "id": 73,
+                "license": "MIT",
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 1,
+                        "literals": [
+                            "solidity",
+                            "^",
+                            "0.8",
+                            ".0"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "129:23:0"
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "canonicalName": "TaskOne6",
+                        "contractDependencies": [],
+                        "contractKind": "contract",
+                        "fullyImplemented": true,
+                        "id": 72,
+                        "linearizedBaseContracts": [
+                            72
+                        ],
+                        "name": "TaskOne6",
+                        "nameLocation": "165:8:0",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "body": {
+                                    "id": 70,
+                                    "nodeType": "Block",
+                                    "src": "551:469:0",
+                                    "statements": [
+                                        {
+                                            "assignments": [
+                                                13
+                                            ],
+                                            "declarations": [
+                                                {
+                                                    "constant": false,
+                                                    "id": 13,
+                                                    "mutability": "mutable",
+                                                    "name": "left",
+                                                    "nameLocation": "570:4:0",
+                                                    "nodeType": "VariableDeclaration",
+                                                    "scope": 70,
+                                                    "src": "562:12:0",
+                                                    "stateVariable": false,
+                                                    "storageLocation": "default",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 12,
+                                                        "name": "uint256",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "562:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "visibility": "internal"
+                                                }
+                                            ],
+                                            "id": 15,
+                                            "initialValue": {
+                                                "hexValue": "30",
+                                                "id": 14,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "number",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "577:1:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_rational_0_by_1",
+                                                    "typeString": "int_const 0"
+                                                },
+                                                "value": "0"
+                                            },
+                                            "nodeType": "VariableDeclarationStatement",
+                                            "src": "562:16:0"
+                                        },
+                                        {
+                                            "assignments": [
+                                                17
+                                            ],
+                                            "declarations": [
+                                                {
+                                                    "constant": false,
+                                                    "id": 17,
+                                                    "mutability": "mutable",
+                                                    "name": "right",
+                                                    "nameLocation": "597:5:0",
+                                                    "nodeType": "VariableDeclaration",
+                                                    "scope": 70,
+                                                    "src": "589:13:0",
+                                                    "stateVariable": false,
+                                                    "storageLocation": "default",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 16,
+                                                        "name": "uint256",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "589:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "visibility": "internal"
+                                                }
+                                            ],
+                                            "id": 20,
+                                            "initialValue": {
+                                                "expression": {
+                                                    "id": 18,
+                                                    "name": "nums",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 5,
+                                                    "src": "605:4:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_array$_t_int256_$dyn_memory_ptr",
+                                                        "typeString": "int256[] memory"
+                                                    }
+                                                },
+                                                "id": 19,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "610:6:0",
+                                                "memberName": "length",
+                                                "nodeType": "MemberAccess",
+                                                "src": "605:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "nodeType": "VariableDeclarationStatement",
+                                            "src": "589:27:0"
+                                        },
+                                        {
+                                            "body": {
+                                                "id": 65,
+                                                "nodeType": "Block",
+                                                "src": "658:303:0",
+                                                "statements": [
+                                                    {
+                                                        "assignments": [
+                                                            25
+                                                        ],
+                                                        "declarations": [
+                                                            {
+                                                                "constant": false,
+                                                                "id": 25,
+                                                                "mutability": "mutable",
+                                                                "name": "mid",
+                                                                "nameLocation": "681:3:0",
+                                                                "nodeType": "VariableDeclaration",
+                                                                "scope": 65,
+                                                                "src": "673:11:0",
+                                                                "stateVariable": false,
+                                                                "storageLocation": "default",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_uint256",
+                                                                    "typeString": "uint256"
+                                                                },
+                                                                "typeName": {
+                                                                    "id": 24,
+                                                                    "name": "uint256",
+                                                                    "nodeType": "ElementaryTypeName",
+                                                                    "src": "673:7:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_uint256",
+                                                                        "typeString": "uint256"
+                                                                    }
+                                                                },
+                                                                "visibility": "internal"
+                                                            }
+                                                        ],
+                                                        "id": 34,
+                                                        "initialValue": {
+                                                            "commonType": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            },
+                                                            "id": 33,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": false,
+                                                            "lValueRequested": false,
+                                                            "leftExpression": {
+                                                                "id": 26,
+                                                                "name": "left",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 13,
+                                                                "src": "687:4:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_uint256",
+                                                                    "typeString": "uint256"
+                                                                }
+                                                            },
+                                                            "nodeType": "BinaryOperation",
+                                                            "operator": "+",
+                                                            "rightExpression": {
+                                                                "commonType": {
+                                                                    "typeIdentifier": "t_uint256",
+                                                                    "typeString": "uint256"
+                                                                },
+                                                                "id": 32,
+                                                                "isConstant": false,
+                                                                "isLValue": false,
+                                                                "isPure": false,
+                                                                "lValueRequested": false,
+                                                                "leftExpression": {
+                                                                    "components": [
+                                                                        {
+                                                                            "commonType": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            },
+                                                                            "id": 29,
+                                                                            "isConstant": false,
+                                                                            "isLValue": false,
+                                                                            "isPure": false,
+                                                                            "lValueRequested": false,
+                                                                            "leftExpression": {
+                                                                                "id": 27,
+                                                                                "name": "right",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 17,
+                                                                                "src": "695:5:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "nodeType": "BinaryOperation",
+                                                                            "operator": "-",
+                                                                            "rightExpression": {
+                                                                                "id": 28,
+                                                                                "name": "left",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 13,
+                                                                                "src": "703:4:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "src": "695:12:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "id": 30,
+                                                                    "isConstant": false,
+                                                                    "isInlineArray": false,
+                                                                    "isLValue": false,
+                                                                    "isPure": false,
+                                                                    "lValueRequested": false,
+                                                                    "nodeType": "TupleExpression",
+                                                                    "src": "694:14:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_uint256",
+                                                                        "typeString": "uint256"
+                                                                    }
+                                                                },
+                                                                "nodeType": "BinaryOperation",
+                                                                "operator": "/",
+                                                                "rightExpression": {
+                                                                    "hexValue": "32",
+                                                                    "id": 31,
+                                                                    "isConstant": false,
+                                                                    "isLValue": false,
+                                                                    "isPure": true,
+                                                                    "kind": "number",
+                                                                    "lValueRequested": false,
+                                                                    "nodeType": "Literal",
+                                                                    "src": "711:1:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_rational_2_by_1",
+                                                                        "typeString": "int_const 2"
+                                                                    },
+                                                                    "value": "2"
+                                                                },
+                                                                "src": "694:18:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_uint256",
+                                                                    "typeString": "uint256"
+                                                                }
+                                                            },
+                                                            "src": "687:25:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "nodeType": "VariableDeclarationStatement",
+                                                        "src": "673:39:0"
+                                                    },
+                                                    {
+                                                        "condition": {
+                                                            "commonType": {
+                                                                "typeIdentifier": "t_int256",
+                                                                "typeString": "int256"
+                                                            },
+                                                            "id": 39,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": false,
+                                                            "lValueRequested": false,
+                                                            "leftExpression": {
+                                                                "baseExpression": {
+                                                                    "id": 35,
+                                                                    "name": "nums",
+                                                                    "nodeType": "Identifier",
+                                                                    "overloadedDeclarations": [],
+                                                                    "referencedDeclaration": 5,
+                                                                    "src": "745:4:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_array$_t_int256_$dyn_memory_ptr",
+                                                                        "typeString": "int256[] memory"
+                                                                    }
+                                                                },
+                                                                "id": 37,
+                                                                "indexExpression": {
+                                                                    "id": 36,
+                                                                    "name": "mid",
+                                                                    "nodeType": "Identifier",
+                                                                    "overloadedDeclarations": [],
+                                                                    "referencedDeclaration": 25,
+                                                                    "src": "750:3:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_uint256",
+                                                                        "typeString": "uint256"
+                                                                    }
+                                                                },
+                                                                "isConstant": false,
+                                                                "isLValue": true,
+                                                                "isPure": false,
+                                                                "lValueRequested": false,
+                                                                "nodeType": "IndexAccess",
+                                                                "src": "745:9:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_int256",
+                                                                    "typeString": "int256"
+                                                                }
+                                                            },
+                                                            "nodeType": "BinaryOperation",
+                                                            "operator": "==",
+                                                            "rightExpression": {
+                                                                "id": 38,
+                                                                "name": "target",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 7,
+                                                                "src": "758:6:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_int256",
+                                                                    "typeString": "int256"
+                                                                }
+                                                            },
+                                                            "src": "745:19:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_bool",
+                                                                "typeString": "bool"
+                                                            }
+                                                        },
+                                                        "falseBody": {
+                                                            "condition": {
+                                                                "commonType": {
+                                                                    "typeIdentifier": "t_int256",
+                                                                    "typeString": "int256"
+                                                                },
+                                                                "id": 50,
+                                                                "isConstant": false,
+                                                                "isLValue": false,
+                                                                "isPure": false,
+                                                                "lValueRequested": false,
+                                                                "leftExpression": {
+                                                                    "baseExpression": {
+                                                                        "id": 46,
+                                                                        "name": "nums",
+                                                                        "nodeType": "Identifier",
+                                                                        "overloadedDeclarations": [],
+                                                                        "referencedDeclaration": 5,
+                                                                        "src": "829:4:0",
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_array$_t_int256_$dyn_memory_ptr",
+                                                                            "typeString": "int256[] memory"
+                                                                        }
+                                                                    },
+                                                                    "id": 48,
+                                                                    "indexExpression": {
+                                                                        "id": 47,
+                                                                        "name": "mid",
+                                                                        "nodeType": "Identifier",
+                                                                        "overloadedDeclarations": [],
+                                                                        "referencedDeclaration": 25,
+                                                                        "src": "834:3:0",
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_uint256",
+                                                                            "typeString": "uint256"
+                                                                        }
+                                                                    },
+                                                                    "isConstant": false,
+                                                                    "isLValue": true,
+                                                                    "isPure": false,
+                                                                    "lValueRequested": false,
+                                                                    "nodeType": "IndexAccess",
+                                                                    "src": "829:9:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_int256",
+                                                                        "typeString": "int256"
+                                                                    }
+                                                                },
+                                                                "nodeType": "BinaryOperation",
+                                                                "operator": "<",
+                                                                "rightExpression": {
+                                                                    "id": 49,
+                                                                    "name": "target",
+                                                                    "nodeType": "Identifier",
+                                                                    "overloadedDeclarations": [],
+                                                                    "referencedDeclaration": 7,
+                                                                    "src": "841:6:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_int256",
+                                                                        "typeString": "int256"
+                                                                    }
+                                                                },
+                                                                "src": "829:18:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_bool",
+                                                                    "typeString": "bool"
+                                                                }
+                                                            },
+                                                            "falseBody": {
+                                                                "id": 62,
+                                                                "nodeType": "Block",
+                                                                "src": "904:46:0",
+                                                                "statements": [
+                                                                    {
+                                                                        "expression": {
+                                                                            "id": 60,
+                                                                            "isConstant": false,
+                                                                            "isLValue": false,
+                                                                            "isPure": false,
+                                                                            "lValueRequested": false,
+                                                                            "leftHandSide": {
+                                                                                "id": 58,
+                                                                                "name": "right",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 17,
+                                                                                "src": "923:5:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "nodeType": "Assignment",
+                                                                            "operator": "=",
+                                                                            "rightHandSide": {
+                                                                                "id": 59,
+                                                                                "name": "mid",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 25,
+                                                                                "src": "931:3:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "src": "923:11:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        },
+                                                                        "id": 61,
+                                                                        "nodeType": "ExpressionStatement",
+                                                                        "src": "923:11:0"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "id": 63,
+                                                            "nodeType": "IfStatement",
+                                                            "src": "825:125:0",
+                                                            "trueBody": {
+                                                                "id": 57,
+                                                                "nodeType": "Block",
+                                                                "src": "849:49:0",
+                                                                "statements": [
+                                                                    {
+                                                                        "expression": {
+                                                                            "id": 55,
+                                                                            "isConstant": false,
+                                                                            "isLValue": false,
+                                                                            "isPure": false,
+                                                                            "lValueRequested": false,
+                                                                            "leftHandSide": {
+                                                                                "id": 51,
+                                                                                "name": "left",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 13,
+                                                                                "src": "868:4:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "nodeType": "Assignment",
+                                                                            "operator": "=",
+                                                                            "rightHandSide": {
+                                                                                "commonType": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                },
+                                                                                "id": 54,
+                                                                                "isConstant": false,
+                                                                                "isLValue": false,
+                                                                                "isPure": false,
+                                                                                "lValueRequested": false,
+                                                                                "leftExpression": {
+                                                                                    "id": 52,
+                                                                                    "name": "mid",
+                                                                                    "nodeType": "Identifier",
+                                                                                    "overloadedDeclarations": [],
+                                                                                    "referencedDeclaration": 25,
+                                                                                    "src": "875:3:0",
+                                                                                    "typeDescriptions": {
+                                                                                        "typeIdentifier": "t_uint256",
+                                                                                        "typeString": "uint256"
+                                                                                    }
+                                                                                },
+                                                                                "nodeType": "BinaryOperation",
+                                                                                "operator": "+",
+                                                                                "rightExpression": {
+                                                                                    "hexValue": "31",
+                                                                                    "id": 53,
+                                                                                    "isConstant": false,
+                                                                                    "isLValue": false,
+                                                                                    "isPure": true,
+                                                                                    "kind": "number",
+                                                                                    "lValueRequested": false,
+                                                                                    "nodeType": "Literal",
+                                                                                    "src": "881:1:0",
+                                                                                    "typeDescriptions": {
+                                                                                        "typeIdentifier": "t_rational_1_by_1",
+                                                                                        "typeString": "int_const 1"
+                                                                                    },
+                                                                                    "value": "1"
+                                                                                },
+                                                                                "src": "875:7:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            },
+                                                                            "src": "868:14:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        },
+                                                                        "id": 56,
+                                                                        "nodeType": "ExpressionStatement",
+                                                                        "src": "868:14:0"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "id": 64,
+                                                        "nodeType": "IfStatement",
+                                                        "src": "741:209:0",
+                                                        "trueBody": {
+                                                            "id": 45,
+                                                            "nodeType": "Block",
+                                                            "src": "766:53:0",
+                                                            "statements": [
+                                                                {
+                                                                    "expression": {
+                                                                        "arguments": [
+                                                                            {
+                                                                                "id": 42,
+                                                                                "name": "mid",
+                                                                                "nodeType": "Identifier",
+                                                                                "overloadedDeclarations": [],
+                                                                                "referencedDeclaration": 25,
+                                                                                "src": "799:3:0",
+                                                                                "typeDescriptions": {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "expression": {
+                                                                            "argumentTypes": [
+                                                                                {
+                                                                                    "typeIdentifier": "t_uint256",
+                                                                                    "typeString": "uint256"
+                                                                                }
+                                                                            ],
+                                                                            "id": 41,
+                                                                            "isConstant": false,
+                                                                            "isLValue": false,
+                                                                            "isPure": true,
+                                                                            "lValueRequested": false,
+                                                                            "nodeType": "ElementaryTypeNameExpression",
+                                                                            "src": "792:6:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_type$_t_int256_$",
+                                                                                "typeString": "type(int256)"
+                                                                            },
+                                                                            "typeName": {
+                                                                                "id": 40,
+                                                                                "name": "int256",
+                                                                                "nodeType": "ElementaryTypeName",
+                                                                                "src": "792:6:0",
+                                                                                "typeDescriptions": {}
+                                                                            }
+                                                                        },
+                                                                        "id": 43,
+                                                                        "isConstant": false,
+                                                                        "isLValue": false,
+                                                                        "isPure": false,
+                                                                        "kind": "typeConversion",
+                                                                        "lValueRequested": false,
+                                                                        "nameLocations": [],
+                                                                        "names": [],
+                                                                        "nodeType": "FunctionCall",
+                                                                        "src": "792:11:0",
+                                                                        "tryCall": false,
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_int256",
+                                                                            "typeString": "int256"
+                                                                        }
+                                                                    },
+                                                                    "functionReturnParameters": 11,
+                                                                    "id": 44,
+                                                                    "nodeType": "Return",
+                                                                    "src": "785:18:0"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "condition": {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 23,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "id": 21,
+                                                    "name": "left",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 13,
+                                                    "src": "644:4:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<",
+                                                "rightExpression": {
+                                                    "id": 22,
+                                                    "name": "right",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 17,
+                                                    "src": "651:5:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "644:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            "id": 66,
+                                            "nodeType": "WhileStatement",
+                                            "src": "637:324:0"
+                                        },
+                                        {
+                                            "expression": {
+                                                "id": 68,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "lValueRequested": false,
+                                                "nodeType": "UnaryOperation",
+                                                "operator": "-",
+                                                "prefix": true,
+                                                "src": "988:2:0",
+                                                "subExpression": {
+                                                    "hexValue": "31",
+                                                    "id": 67,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "989:1:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_1_by_1",
+                                                        "typeString": "int_const 1"
+                                                    },
+                                                    "value": "1"
+                                                },
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_rational_minus_1_by_1",
+                                                    "typeString": "int_const -1"
+                                                }
+                                            },
+                                            "functionReturnParameters": 11,
+                                            "id": 69,
+                                            "nodeType": "Return",
+                                            "src": "981:9:0"
+                                        }
+                                    ]
+                                },
+                                "documentation": {
+                                    "id": 2,
+                                    "nodeType": "StructuredDocumentation",
+                                    "src": "181:260:0",
+                                    "text": " @dev 在有序数组中使用二分查找算法查找目标值\n @param nums 有序数组（升序排列）\n @param target 要查找的目标值\n @return index 目标值在数组中的索引，如果不存在则返回-1"
+                                },
+                                "functionSelector": "f4353706",
+                                "id": 71,
+                                "implemented": true,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "binarySearch",
+                                "nameLocation": "456:12:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 8,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 5,
+                                            "mutability": "mutable",
+                                            "name": "nums",
+                                            "nameLocation": "485:4:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 71,
+                                            "src": "469:20:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_array$_t_int256_$dyn_memory_ptr",
+                                                "typeString": "int256[]"
+                                            },
+                                            "typeName": {
+                                                "baseType": {
+                                                    "id": 3,
+                                                    "name": "int256",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "469:6:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_int256",
+                                                        "typeString": "int256"
+                                                    }
+                                                },
+                                                "id": 4,
+                                                "nodeType": "ArrayTypeName",
+                                                "src": "469:8:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_int256_$dyn_storage_ptr",
+                                                    "typeString": "int256[]"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 7,
+                                            "mutability": "mutable",
+                                            "name": "target",
+                                            "nameLocation": "498:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 71,
+                                            "src": "491:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_int256",
+                                                "typeString": "int256"
+                                            },
+                                            "typeName": {
+                                                "id": 6,
+                                                "name": "int256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "491:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_int256",
+                                                    "typeString": "int256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "468:37:0"
+                                },
+                                "returnParameters": {
+                                    "id": 11,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 10,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 71,
+                                            "src": "537:6:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_int256",
+                                                "typeString": "int256"
+                                            },
+                                            "typeName": {
+                                                "id": 9,
+                                                "name": "int256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "537:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_int256",
+                                                    "typeString": "int256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "536:8:0"
+                                },
+                                "scope": 72,
+                                "src": "447:573:0",
+                                "stateMutability": "pure",
+                                "virtual": false,
+                                "visibility": "public"
+                            }
+                        ],
+                        "scope": 73,
+                        "src": "156:867:0",
+                        "usedErrors": [],
+                        "usedEvents": []
+                    }
+                ],
+                "src": "129:894:0"
+            },
+            "id": 0
+        }
+    }
+}
