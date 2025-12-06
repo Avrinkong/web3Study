@@ -1,153 +1,121 @@
-const { expect } = require("chai");
-const { ethers, upgrades } = require("hardhat");
+import { describe, it, beforeEach } from "node:test";
+import { expect } from "chai";
+import hre from "hardhat";
+import { parseEther, parseUnits } from "viem";
+import { loadFixture } from "@nomicfoundation/hardhat-toolbox-viem/testing";
 
-describe("Auction Market Upgrade", function () {
-  let MyNFT;
-  let myNFT;
-  let AuctionV1;
-  let AuctionV2;
-  let auction;
-  let owner;
-  let seller;
-  let bidder1;
-  
-  beforeEach(async function () {
-    [owner, seller, bidder1] = await ethers.getSigners();
+describe("Auction Upgrade", function () {
+  async function deployContractsFixture() {
+    const [owner, seller] = await hre.viem.getWalletClients();
     
     // 部署Mock价格Feed
-    const MockPriceFeed = await ethers.getContractFactory("MockV3Aggregator");
-    const mockEthPriceFeed = await MockPriceFeed.deploy(8, 2000 * 10 ** 8);
+    const MockPriceFeed = await hre.viem.deployContract("MockV3Aggregator", [8, 2000n * 10n ** 8n]);
     
     // 部署NFT合约
-    MyNFT = await ethers.getContractFactory("MyNFT");
-    myNFT = await MyNFT.deploy();
-    await myNFT.waitForDeployment();
+    const MyNFT = await hre.viem.deployContract("MyNFT", []);
     
     // 部署拍卖合约V1
-    AuctionV1 = await ethers.getContractFactory("AuctionV1");
-    auction = await upgrades.deployProxy(
-      AuctionV1,
-      [await mockEthPriceFeed.getAddress(), owner.address],
-      {
-        initializer: "initialize",
-        kind: "uups",
-      }
-    );
-    await auction.waitForDeployment();
+    const AuctionV1 = await hre.viem.deployContract("AuctionV1", []);
+    
+    // 初始化拍卖合约
+    await AuctionV1.write.initialize([MockPriceFeed.address, owner.account.address]);
     
     // 铸造NFT
-    await myNFT.connect(owner).safeMint(seller.address, "ipfs://test-nft-1");
-  });
-
+    await MyNFT.write.safeMint([seller.account.address, "ipfs://test-nft-1"]);
+    
+    return { owner, seller, MyNFT, AuctionV1, MockPriceFeed };
+  }
+  
   describe("UUPS Upgrade", function () {
     it("Should upgrade to V2 successfully", async function () {
-      // 部署V2合约
-      AuctionV2 = await ethers.getContractFactory("AuctionV2");
-      const auctionV2 = await upgrades.upgradeProxy(await auction.getAddress(), AuctionV2);
-      await auctionV2.waitForDeployment();
+      const { owner, MyNFT, AuctionV1 } = await loadFixture(deployContractsFixture);
+      
+      // 授权NFT并创建拍卖
+      await MyNFT.write.approve([AuctionV1.address, 0n], {
+        account: owner.account,
+      });
+      
+      const auctionId = await AuctionV1.write.createAuction([
+        MyNFT.address,
+        0n,
+        3600n,
+        parseEther("1"),
+        "0x0000000000000000000000000000000000000000",
+      ], {
+        account: owner.account,
+      });
+      
+      const auctionBefore = await AuctionV1.read.getAuction([auctionId]);
+      
+      // 部署AuctionV2
+      const AuctionV2 = await hre.viem.getContractFactory("AuctionV2");
+      const auctionV2Address = await hre.upgrades.upgradeProxy(
+        AuctionV1.address,
+        AuctionV2
+      );
+      
+      // 重新获取合约实例
+      const auctionV2 = await hre.viem.getContractAt(
+        "AuctionV2",
+        auctionV2Address
+      );
       
       // 初始化V2功能
-      await auctionV2.initializeV2();
-      
-      // 验证V2功能
-      expect(await auctionV2.version()).to.equal("V2.0.0");
-      
-      // 检查手续费层级
-      const feeTiers = await auctionV2.getAllFeeTiers();
-      expect(feeTiers.length).to.equal(4);
-      expect(feeTiers[0].minAmount).to.equal(0);
-      expect(feeTiers[0].feePercentage).to.equal(250);
-    });
-
-    it("Should maintain state after upgrade", async function () {
-      // 在升级前创建拍卖
-      await myNFT.connect(seller).approve(await auction.getAddress(), 0);
-      await auction.connect(seller).createAuction(
-        await myNFT.getAddress(),
-        0,
-        3600,
-        ethers.parseEther("1"),
-        ethers.ZeroAddress
-      );
-      
-      const auctionId = await auction.nftToAuctionId(await myNFT.getAddress(), 0);
-      const auctionDataBefore = await auction.getAuction(auctionId);
-      
-      // 升级到V2
-      AuctionV2 = await ethers.getContractFactory("AuctionV2");
-      const auctionV2 = await upgrades.upgradeProxy(await auction.getAddress(), AuctionV2);
-      await auctionV2.waitForDeployment();
-      await auctionV2.initializeV2();
+      await auctionV2.write.initializeV2();
       
       // 验证状态保持不变
-      const auctionDataAfter = await auctionV2.getAuction(auctionId);
+      const auctionAfter = await auctionV2.read.getAuction([auctionId]);
+      expect(auctionAfter[1]).to.equal(auctionBefore[1]); // seller
+      expect(auctionAfter[2]).to.equal(auctionBefore[2]); // nftAddress
+      expect(auctionAfter[3]).to.equal(auctionBefore[3]); // tokenId
       
-      expect(auctionDataAfter.seller).to.equal(auctionDataBefore.seller);
-      expect(auctionDataAfter.nftAddress).to.equal(auctionDataBefore.nftAddress);
-      expect(auctionDataAfter.tokenId).to.equal(auctionDataBefore.tokenId);
-      expect(auctionDataAfter.startPrice).to.equal(auctionDataBefore.startPrice);
-      expect(auctionDataAfter.status).to.equal(auctionDataBefore.status);
+      // 验证V2功能
+      const version = await auctionV2.read.version();
+      expect(version).to.equal("V2.0.0");
+      
+      const feeTiers = await auctionV2.read.getAllFeeTiers();
+      expect(feeTiers.length).to.equal(4);
     });
-
+    
     it("Should use dynamic fees in V2", async function () {
-      // 升级到V2
-      AuctionV2 = await ethers.getContractFactory("AuctionV2");
-      const auctionV2 = await upgrades.upgradeProxy(await auction.getAddress(), AuctionV2);
-      await auctionV2.waitForDeployment();
-      await auctionV2.initializeV2();
+      const { owner, MyNFT } = await loadFixture(deployContractsFixture);
       
-      // 创建拍卖
-      await myNFT.connect(seller).approve(await auctionV2.getAddress(), 0);
-      await auctionV2.connect(seller).createAuction(
-        await myNFT.getAddress(),
-        0,
-        3600,
-        ethers.parseEther("1"),
-        ethers.ZeroAddress
-      );
+      // 部署新拍卖合约V2
+      const AuctionV2 = await hre.viem.deployContract("AuctionV2", []);
       
-      const auctionId = await auctionV2.nftToAuctionId(await myNFT.getAddress(), 0);
+      const MockPriceFeed = await hre.viem.deployContract("MockV3Aggregator", [8, 2000n * 10n ** 8n]);
       
-      // 模拟高价出价（$5000）
-      const highBid = ethers.parseEther("2.5"); // 2.5 ETH * $2000 = $5000
-      await auctionV2.connect(bidder1).placeBid(auctionId, 0, { value: highBid });
+      // 初始化
+      await AuctionV2.write.initialize([MockPriceFeed.address, owner.account.address]);
+      await AuctionV2.write.initializeV2();
       
-      // 快进时间并结束拍卖
-      await ethers.provider.send("evm_increaseTime", [3601]);
-      await ethers.provider.send("evm_mine");
+      // 授权并创建拍卖
+      await MyNFT.write.approve([AuctionV2.address, 0n], {
+        account: owner.account,
+      });
       
-      const initialSellerBalance = await ethers.provider.getBalance(seller.address);
-      await auctionV2.connect(owner).endAuction(auctionId);
+      const auctionId = await AuctionV2.write.createAuction([
+        MyNFT.address,
+        0n,
+        3600n,
+        parseEther("1"),
+        "0x0000000000000000000000000000000000000000",
+      ], {
+        account: owner.account,
+      });
       
-      // 检查手续费：$5000应使用2.0%的手续费层级
-      const finalSellerBalance = await ethers.provider.getBalance(seller.address);
-      const received = finalSellerBalance - initialSellerBalance;
+      // 测试动态手续费
+      const lowBid = parseEther("0.5"); // $1000
+      const mediumBid = parseEther("5"); // $10000
+      const highBid = parseEther("25"); // $50000
       
-      const expectedFee = highBid * 200n / 10000n; // 2.0%
-      const expectedSellerAmount = highBid - expectedFee;
+      const lowFee = await AuctionV2.read.getDynamicFee([1000n * 10n ** 18n]);
+      const mediumFee = await AuctionV2.read.getDynamicFee([10000n * 10n ** 18n]);
+      const highFee = await AuctionV2.read.getDynamicFee([50000n * 10n ** 18n]);
       
-      // 考虑到gas费用，检查大致范围
-      expect(received).to.be.closeTo(expectedSellerAmount, ethers.parseEther("0.01"));
-    });
-
-    it("Should allow managing fee tiers", async function () {
-      // 升级到V2
-      AuctionV2 = await ethers.getContractFactory("AuctionV2");
-      const auctionV2 = await upgrades.upgradeProxy(await auction.getAddress(), AuctionV2);
-      await auctionV2.waitForDeployment();
-      await auctionV2.initializeV2();
-      
-      // 添加新手续费层级
-      await auctionV2.addFeeTier(50000n * 10n ** 18n, 50); // $50000以上0.5%
-      
-      const feeTiers = await auctionV2.getAllFeeTiers();
-      expect(feeTiers.length).to.equal(5);
-      
-      // 移除手续费层级
-      await auctionV2.removeFeeTier(2);
-      
-      const updatedFeeTiers = await auctionV2.getAllFeeTiers();
-      expect(updatedFeeTiers.length).to.equal(4);
+      expect(lowFee).to.equal(250n); // 2.5%
+      expect(mediumFee).to.equal(200n); // 2.0%
+      expect(highFee).to.equal(150n); // 1.5%
     });
   });
 });

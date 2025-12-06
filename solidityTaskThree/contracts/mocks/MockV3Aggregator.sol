@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
@@ -26,7 +26,6 @@ contract MockV3Aggregator is AggregatorV3Interface {
         return (0, _latestAnswer, block.timestamp, block.timestamp, 0);
     }
     
-    // 以下函数仅用于实现接口
     function description() external pure override returns (string memory) {
         return "Mock Price Feed";
     }
