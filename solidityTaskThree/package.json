@@ -14,7 +14,8 @@
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@openzeppelin/hardhat-upgrades": "^3.9.1",
     "hardhat": "^2.27.1",
-    "hardhat-deploy": "^1.0.4"
+    "hardhat-deploy": "^1.0.4",
+    "undici": "^7.16.0"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.2.1",

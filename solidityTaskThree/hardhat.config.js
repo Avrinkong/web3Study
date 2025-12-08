@@ -1,3 +1,7 @@
+const { ProxyAgent, setGlobalDispatcher } = require("undici");
+const proxyAgent = new ProxyAgent("http://127.0.0.1:7897"); // 替换为你的代理端口
+setGlobalDispatcher(proxyAgent);
+
 require("dotenv").config();
 require("@nomicfoundation/hardhat-toolbox");
 require("@openzeppelin/hardhat-upgrades");
