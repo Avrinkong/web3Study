@@ -1,31 +1,24 @@
-const { ethers, upgrades } = require("hardhat");
-require("dotenv").config();
+const { ethers } = require("hardhat");
 
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deployer:", deployer.address);
 
-  // 部署NFT合约
+  // 获取合约工厂
   const MyNFT = await ethers.getContractFactory("MyNFT");
+  
+  // 部署合约
   const myNFT = await MyNFT.deploy();
-  await myNFT.deployed();
-  console.log("MyNFT deployed to:", myNFT.address);
-
-  // 部署可升级拍卖合约 (UUPS代理)
-  const AuctionV1 = await ethers.getContractFactory("AuctionV1");
-  const auctionProxy = await upgrades.deployProxy(
-    AuctionV1,
-    [
-      "0x694AA1769357215DE4FAC081bf1f309aDC325306", // Sepolia ETH/USD 预言机
-      deployer.address // 手续费接收地址
-    ],
-    { initializer: "initialize", kind: "uups" }
-  );
-  await auctionProxy.deployed();
-  console.log("Auction Proxy deployed to:", auctionProxy.address);
+  
+  // 等待部署完成（注意：不是调用 deployed() 方法）
+  await myNFT.waitForDeployment();
+  
+  console.log("MyNFT deployed to:", await myNFT.getAddress());
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

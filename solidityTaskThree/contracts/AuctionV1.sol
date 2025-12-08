@@ -114,7 +114,7 @@ contract AuctionV1 is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     }
 
     // 结束拍卖并结算
-    function endAuction(uint256 auctionId) external {
+    function endAuction(uint256 auctionId) external virtual  {
         Auction storage auction = auctions[auctionId];
         require(block.timestamp >= auction.endTime, "Auction not ended");
         require(!auction.ended, "Auction already ended");

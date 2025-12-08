@@ -22,7 +22,11 @@ contract MyNFT is ERC721, Ownable {
     }
     
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), "Token does not exist");
+        require(_exists(tokenId), "URI query for nonexistent token");
         return _tokenURIs[tokenId];
+    }
+
+    function _exists(uint256 tokenId) internal view returns (bool) {
+        return _ownerOf(tokenId) != address(0);
     }
 }
