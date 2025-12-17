@@ -1,5 +1,5 @@
 {
-  "address": "0x087D1d63b27160a5260B91396a5d9fa2c29862E8",
+  "address": "0x870497B7A0BD66170e13178e1efc5D087a68a74a",
   "abi": [
     "error AddressEmptyCode(address)",
     "error ERC1967InvalidImplementation(address)",

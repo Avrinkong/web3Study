@@ -11,9 +11,10 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 
 import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import "hardhat/console.sol";  
 
 
-contract NFTAuctionMarket is
+contract NFTAuction is
     IERC721Receiver,
     Initializable,
     UUPSUpgradeable,
@@ -36,7 +37,7 @@ contract NFTAuctionMarket is
         uint256 auctionId;  //拍卖ID
     }
 
-    Auction private auctions; // 拍卖详情的对象
+    Auction private auctionInfo; // 拍卖详情的对象
 
     /**
      * eth(address(0)) => 0x694AA1769357215DE4FAC081bf1f309aDC325306 ETH/USD

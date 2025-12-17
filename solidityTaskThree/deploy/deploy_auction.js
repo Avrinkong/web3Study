@@ -15,11 +15,20 @@ async function main() {
     console.log("部署用户地址：:", deployer.address);
 
     console.log("开始部署拍卖代理合约...");
-    const nftContract = "0x4E8Ef74A824d4ef1C83D7c231c4bed5f4a0a6115";
+    const nftContract = "0x182D24eD66c4380E411E8a1045523d6aCb72350D";
     const tokenId = 1;
     // 通过代理合约部署拍卖合约
     const NFTAuction = await ethers.getContractFactory("NFTAuction");
-    const nftAuctionProxy = await upgrades.deployProxy(NFTAuction, [deployer.address, nftContract, 2, 10000, tokenId, ethers.ZeroAddress, ethers.ZeroAddress, 0], {
+    const nftAuctionProxy = await upgrades.deployProxy(
+        NFTAuction, 
+        [deployer.address, 
+            nftContract, 
+            2, 
+            10000, 
+            tokenId, 
+            ethers.ZeroAddress,  
+            ethers.ZeroAddress, 
+            1], {
         initializer: "initialize",
     })
     await nftAuctionProxy.waitForDeployment();  // 等待部署完成

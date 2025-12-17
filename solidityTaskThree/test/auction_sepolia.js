@@ -8,13 +8,13 @@ function sleep(ms) {
 describe("Sepolia Test NFTAuction", async function () {
     this.timeout(600 * 1000); // 设置超时为10分钟
 
-    const myNFT = "";   // task2下的NFT在Sepolia下合约地址
-    const nftAuction = "";    // Sepolia下的NFT拍卖合约地址
-    const nfgAuctionFactoryProxy = "";    // Sepolia下的NFT拍卖工厂代理合约地址
+    const myNFT = "0xdf7774B064AB01CFDC9c02311795Fb8F8fa5c2e9";   // task2下的NFT在Sepolia下合约地址
+    const nftAuction = "0x870497B7A0BD66170e13178e1efc5D087a68a74a";    // Sepolia下的NFT拍卖合约地址
+    const nfgAuctionFactoryProxy = "0x61bC83D668004A5a818f8A4ae90648D4447Fc632";    // Sepolia下的NFT拍卖工厂代理合约地址
 
-    const sep_owner = "";    // Sepolia下的部署NFT、和拍卖合约的拥有者地址
-    const sep_user1 = "";     // Sepolia下的用户1地址
-    const sep_user2 = "";     // Sepolia下的用户2地址
+    const sep_owner = "0x6aA50b917a7aB27891e0555e63090Ed231075DC0";    // Sepolia下的部署NFT、和拍卖合约的拥有者地址
+    const sep_user1 = "0xece793664379dea912fc7da67a628d7192c9b09a";     // Sepolia下的用户1地址
+    const sep_user2 = "0x56b01bd7bbd6820c3eeba5a0d57e0d8e113a7131";     // Sepolia下的用户2地址
     
     const usdc = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";  // Sepolia下的USDC合约地址
     const ethPriceFeed = "0x694AA1769357215DE4FAC081bf1f309aDC325306";    // Sepolia下的ETH/USD价格喂价地址
@@ -24,12 +24,14 @@ describe("Sepolia Test NFTAuction", async function () {
     let auction;
     let auctionFactoryProxy;
     let mintTokenId;
+    // let nftDeployer;
     let deployer;
     let user1;
     let user2;
     let owner;
     beforeEach(async function () {
         // 所有合约都已经部署到Sepolia上了，所以直接根据合约地址获取实例
+        // nftDeployer = await ethers.getSigner(nft_owner);
         deployer = await ethers.getSigner(sep_owner);
         user1 = await ethers.getSigner(sep_user1);
         user2 = await ethers.getSigner(sep_user2);
@@ -46,7 +48,7 @@ describe("Sepolia Test NFTAuction", async function () {
         console.log("NFTAuction合约地址：", auctionAddress);
 
         const auctionInfo = await auction.getAuctionInfo();
-        // console.log("Auction info:", auctionInfo);
+        console.log("Auction info:", auctionInfo);
 
         // 3.根据拍卖工厂合约地址，拿到拍卖工厂合约实例
         auctionFactoryProxy = await ethers.getContractAt("NFTAuctionFactory", nfgAuctionFactoryProxy);
@@ -162,7 +164,7 @@ describe("Sepolia Test NFTAuction", async function () {
             // 验证拍卖结束后，deployer竞拍成功，成为NFT的owner
             owner = await nft.ownerOf(tokenId);
             console.log("NFT拍卖结束后，NFT的owner:", owner);
-            expect(owner).to.equal(deployer.address);
+            expect(owner).to.equal( deployer.address);
             // 最后可以到 https://sepolia.etherscan.io/ 上查看合约交易记录验证
         });
     });
