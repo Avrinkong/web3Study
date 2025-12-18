@@ -8,7 +8,7 @@ function sleep(ms) {
 describe("Sepolia Test NFTAuction", async function () {
     this.timeout(600 * 1000); // 设置超时为10分钟
 
-    const myNFT = "0xdf7774B064AB01CFDC9c02311795Fb8F8fa5c2e9";   // task2下的NFT在Sepolia下合约地址
+    const myNFT = "0xb92FFf81D79565676643fC9088DBF6F50e298823";   // task2下的NFT在Sepolia下合约地址
     const nftAuction = "0x870497B7A0BD66170e13178e1efc5D087a68a74a";    // Sepolia下的NFT拍卖合约地址
     const nfgAuctionFactoryProxy = "0x61bC83D668004A5a818f8A4ae90648D4447Fc632";    // Sepolia下的NFT拍卖工厂代理合约地址
 
